@@ -77,8 +77,9 @@ export const AppStyled = styled.div`
       border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
       background-repeat: no-repeat;
       padding: 20px;
-      .topImage {
-      }
+      background-position: ${(props) =>
+        `${props.backgroundPosition.x}% ${props.backgroundPosition.y}%`};
+      cursor: ${(props) => `${props.isDragging ? "grabbing" : "grab"}`};
     }
 
     .infoAndAdviceTitle {

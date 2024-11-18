@@ -48,3 +48,9 @@ export const colorThemes = {
     hueRotate: "90deg",
   },
 };
+export const colorThemeDisplay = [
+  colorThemes.pinkish,
+  colorThemes.lightBlue,
+  colorThemes.cinematic,
+  colorThemes.dimGreen,
+];
