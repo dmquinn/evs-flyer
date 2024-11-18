@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/evs-flyer/static/css/main.156ca8d8.css",
-    "main.js": "/evs-flyer/static/js/main.deafdcee.js",
+    "main.js": "/evs-flyer/static/js/main.0b57eb48.js",
     "static/js/703.596d083f.chunk.js": "/evs-flyer/static/js/703.596d083f.chunk.js",
     "static/js/9.7c74f5ba.chunk.js": "/evs-flyer/static/js/9.7c74f5ba.chunk.js",
     "static/media/sign.svg": "/evs-flyer/static/media/sign.202bd2ba27528fdf2d90087bf7e86092.svg",
@@ -11,12 +11,12 @@
     "static/media/lightbulb.svg": "/evs-flyer/static/media/lightbulb.f3ebe5cdb05674db7f25e507f1be622d.svg",
     "index.html": "/evs-flyer/index.html",
     "main.156ca8d8.css.map": "/evs-flyer/static/css/main.156ca8d8.css.map",
-    "main.deafdcee.js.map": "/evs-flyer/static/js/main.deafdcee.js.map",
+    "main.0b57eb48.js.map": "/evs-flyer/static/js/main.0b57eb48.js.map",
     "703.596d083f.chunk.js.map": "/evs-flyer/static/js/703.596d083f.chunk.js.map",
     "9.7c74f5ba.chunk.js.map": "/evs-flyer/static/js/9.7c74f5ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.156ca8d8.css",
-    "static/js/main.deafdcee.js"
+    "static/js/main.0b57eb48.js"
   ]
 }
