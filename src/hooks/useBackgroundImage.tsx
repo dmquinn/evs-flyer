@@ -1,12 +1,22 @@
 import { useState } from "react";
 
-const useBackgroundImage = () => {
-  const [backgroundPosition, setBackgroundPosition] = useState({
-    x: 50,
-    y: 50,
-  });
-  const [isDragging, setIsDragging] = useState(false);
-  const [startDragPosition, setStartDragPosition] = useState({ x: 0, y: 0 });
+interface UseBackgroundImageReturn {
+  backgroundPosition: { x: number; y: number };
+  isDragging: boolean;
+  handleMouseDown: (e: MouseEvent) => void;
+  handleMouseMove: (e: MouseEvent) => void;
+  handleMouseUp: (e: MouseEvent) => void;
+}
+const useBackgroundImage = (): UseBackgroundImageReturn => {
+  const [backgroundPosition, setBackgroundPosition] = useState<{
+    x: number;
+    y: number;
+  }>({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [startDragPosition, setStartDragPosition] = useState<{
+    x: number;
+    y: number;
+  }>({ x: 0, y: 0 });
 
   const handleMouseDown = (event) => {
     setIsDragging(true);

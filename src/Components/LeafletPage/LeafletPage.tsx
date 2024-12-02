@@ -1,9 +1,10 @@
 import React from "react";
-import logo from "../logo.svg";
-import grass from "../grass.svg";
-import sign from "../sign.svg";
-import lightbulb from "../lightbulb.svg";
-const Page = ({
+import logo from "../../assets/logo.svg";
+import grass from "../../assets/grass.svg";
+import sign from "../../assets/sign.svg";
+import lightbulb from "../../assets/lightbulb.svg";
+import { LeafletPageStyled } from "./LeafletPageStyled";
+const LeafletPage = ({
   title,
   handleMouseDown,
   handleMouseMove,
@@ -12,9 +13,23 @@ const Page = ({
   infoSection,
   tipTitle,
   tipText,
+  infoAdviceRef,
+  theme,
+  mainImage,
+  tipSize,
+  infoSize,
+  backgroundPosition,
+  isDragging,
 }) => {
   return (
-    <div className="page">
+    <LeafletPageStyled
+      theme={theme}
+      image={mainImage}
+      tipSize={tipSize}
+      infoSize={infoSize}
+      backgroundPosition={backgroundPosition}
+      isDragging={isDragging}
+    >
       <div className="titleBubble">{title}</div>
       <div
         className="topImageContainer"
@@ -22,7 +37,9 @@ const Page = ({
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
       ></div>
-      <div className="infoAndAdviceTitle">{infoAndAdviceTitle}</div>
+      <div className="infoAndAdviceTitle" ref={infoAdviceRef}>
+        {infoAndAdviceTitle}
+      </div>
       <div
         className="infoSection"
         dangerouslySetInnerHTML={{ __html: infoSection }}
@@ -36,8 +53,8 @@ const Page = ({
       <img src={logo} className="logo" alt="logo" />
       <img src={grass} className="grass" alt="grass" />
       <img src={sign} className="sign" alt="sign" />
-    </div>
+    </LeafletPageStyled>
   );
 };
 
-export default Page;
+export default LeafletPage;

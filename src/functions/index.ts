@@ -2,7 +2,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 export const generatePDF = () => {
-  const pageElement = document.querySelector(".page");
+  const pageElement: HTMLElement = document.querySelector(".page");
 
   if (pageElement) {
     const options = {
@@ -25,3 +25,4 @@ export const generatePDF = () => {
     });
   }
 };
+
