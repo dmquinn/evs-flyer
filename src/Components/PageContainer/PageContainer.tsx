@@ -1,44 +1,31 @@
 import { FC, useRef, useState } from "react";
 import { PageContainerStyled } from "./PageContainerStyled";
 import { colorThemeDisplay, colorThemes } from "../../data/colorThemes";
-import pdf from "../../assets/pdf.svg";
 import useInputs from "../../hooks/useInputs";
 import useBackgroundImage from "../../hooks/useBackgroundImage";
-import { generatePDF } from "../../functions";
-import Tools from "../Tools";
-import { TextTools } from "../TextTools";
-import TablePage from "../TablePage";
 import TitlePage from "../TitlePage/TitlePage";
 import LeafletPage from "../LeafletPage/LeafletPage";
+import SummaryPage from "../SummaryPage/SummaryPage";
+import Header from "../Header/Header";
+import ProgramPage from "../ProgramPage/ProgramPage";
+import useFontSize from "../../hooks/useFontSize";
 
-const pageModes = ["leaflet", "title", "table"] as const;
+const pageModes = ["leaflet", "title", "summary", "program"] as const;
 
 const PageContainer: FC = () => {
-  const infoAdviceRef = useRef<HTMLDivElement | null>(null);
-  const [pageMode, setPageMode] = useState<"leaflet" | "title" | "table">(
-    "leaflet"
-  );
+  const [pageMode, setPageMode] = useState<
+    "leaflet" | "title" | "summary" | "program"
+  >("leaflet");
+  const { fontSizes, fontSelector, setFontSizes, handleFocus } = useFontSize();
 
   const {
     colorTheme,
     setColorTheme,
-    title,
-    setTitle,
     topImage,
     setTopImage,
-    infoAndAdviceTitle,
-    setInfoAndAdviceTitle,
-    infoSection,
-    tipSectionFontSize,
-    setTipSectionFontSize,
-    setInfoSection,
-    infoSectionFontSize,
-    setInfoSectionFontSize,
-    tipTitle,
-    setTipTitle,
-    tipText,
-    setTipText,
-  } = useInputs();
+    imageStyle,
+    setImageStyle,
+  } = useInputs(pageMode);
 
   const {
     backgroundPosition,
@@ -48,107 +35,81 @@ const PageContainer: FC = () => {
     handleMouseMove,
   } = useBackgroundImage();
 
-  const inputs = [
-    {
-      placeholder: "Main Title",
-      action: setTitle,
-      showOn: ["leaflet", "title"],
-    },
-    {
-      placeholder: "Image URL",
-      action: setTopImage,
-      showOn: ["leaflet", "title"],
-    },
-    {
-      placeholder: "Info and Advice Title",
-      action: setInfoAndAdviceTitle,
-      showOn: ["leaflet"],
-    },
-    {
-      placeholder: "Info and Advice Text",
-      action: setInfoSection,
-      fontAction: setInfoSectionFontSize,
-      fontValue: infoSectionFontSize,
-      type: "textarea",
-      showOn: ["leaflet", "title"],
-    },
-    { placeholder: "Top Tip Title", action: setTipTitle, showOn: ["leaflet"] },
-    {
-      placeholder: "Top Tip Text",
-      action: setTipText,
-      fontAction: setTipSectionFontSize,
-      fontValue: tipSectionFontSize,
-      type: "textarea",
-      showOn: ["leaflet"],
-    },
-  ];
-
-  const highlightWord = () => {
-    const subString = window?.getSelection()?.toString();
-    if (!subString) return;
-
-    const updatedText = infoSection.replace(
-      subString,
-      `<span class="highlighted">${subString}</span>`
-    );
-
-    setInfoSection(updatedText);
-  };
-
   const renderPage = () => {
     const sharedProps = {
-      title,
       theme: colorThemes[colorTheme],
       mainImage: topImage,
-      infoSection,
+      backgroundPosition: backgroundPosition,
+      isDragging: isDragging,
+      handleMouseDown,
+      handleMouseMove,
+      handleMouseUp,
+      handleFocus,
+      fontSizes,
     };
 
     const pages = {
-      table: <TablePage />,
-      title: <TitlePage {...sharedProps} />,
+      program: (
+        <div className="page">
+          <ProgramPage {...sharedProps} />
+        </div>
+      ),
+      summary: (
+        <div className="page">
+          <SummaryPage {...sharedProps} />
+        </div>
+      ),
+      title: (
+        <div className="page">
+          <TitlePage {...sharedProps} imageStyle={imageStyle} />
+        </div>
+      ),
       leaflet: (
-        <LeafletPage
-          {...sharedProps}
-          handleMouseDown={handleMouseDown}
-          handleMouseMove={handleMouseMove}
-          handleMouseUp={handleMouseUp}
-          infoAndAdviceTitle={infoAndAdviceTitle}
-          tipTitle={tipTitle}
-          tipText={tipText}
-          infoAdviceRef={infoAdviceRef}
-          tipSize={tipSectionFontSize}
-          infoSize={infoSectionFontSize}
-          backgroundPosition={backgroundPosition}
-          isDragging={isDragging}
-        />
+        <div className="page">
+          <LeafletPage {...sharedProps} />{" "}
+        </div>
       ),
     };
 
     return pages[pageMode];
   };
-
   return (
     <PageContainerStyled theme={colorThemes[colorTheme]}>
-      <div className="modeButtonsRow">
-        {pageModes.map((mode) => (
-          <button
-            key={mode}
-            className="modeButtons"
-            onClick={() => setPageMode(mode)}
-          >
-            {mode}
-          </button>
-        ))}
+      <div className="tools">
+        {fontSelector && (
+          <div className="fontSelector">
+            <label htmlFor="fontSelector">font size:</label>
+            <input
+              id="fontSelector"
+              value={fontSizes[fontSelector]}
+              type="number"
+              onChange={(e) =>
+                setFontSizes({ ...fontSizes, [fontSelector]: e.target.value })
+              }
+            />
+          </div>
+        )}
+        <input
+          placeholder="image url"
+          onChange={(e) => setTopImage(e.target.value)}
+          className="imgInput"
+        />
+        <div className="switchContainer">
+          <p>Image Style</p>
+          <label className="toggle-switch">
+            <input
+              type="checkbox"
+              onChange={() => setImageStyle(!imageStyle)}
+            />
+            <span className="switch" />
+          </label>
+        </div>
       </div>
-      <button onClick={generatePDF}>
-        <img src={pdf} alt="Download PDF" />
-      </button>
-      <TextTools highlightWord={highlightWord} />
-      <Tools
+      <Header
+        setPageMode={setPageMode}
+        pageModes={pageModes}
         colorThemeDisplay={colorThemeDisplay}
         setColorTheme={setColorTheme}
-        inputs={inputs}
-        pageMode={pageMode}
       />
       {renderPage()}
     </PageContainerStyled>

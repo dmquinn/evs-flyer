@@ -5,26 +5,20 @@ interface StyleProps {
   image: string
   backgroundPosition: { x: number, y: number }
   isDragging: boolean
-  infoSize: number
-  tipSize: number
+  fontSizes: {
+    leafletTitleBubble?: number, leafletInfoAndAdviceTitle?: string, leafletInfoSection: string,
+    leafletTopTipTitle?: string,
+    leafletTopTipSection?: string
+  }
 }
 export const LeafletPageStyled = styled.div<StyleProps>`
-  position: relative;
-  height: 297mm;
-  width: 210mm;
-  overflow: hidden;
-  background-color: ${(props) => props.theme.page};
-  box-shadow: 0 0 12px 2px #b0b0b075;
-  padding: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  .titleBubble {
+  .leafletTitleBubble {
     position: relative;
     font-weight: 700;
     line-height: 1;
     margin-top: -80px;
     margin-left: -80px;
-    font-size: 40px;
+    font-size:  ${(props) => props.fontSizes.leafletTitleBubble ? `${props.fontSizes.leafletTitleBubble}px` : "40px"};
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     background-color: ${(props) => props.theme.title};
     width: fit-content;
@@ -52,20 +46,22 @@ export const LeafletPageStyled = styled.div<StyleProps>`
     cursor: ${(props) => `${props.isDragging ? "grabbing" : "grab"}`};
   }
 
-  .infoAndAdviceTitle {
+  .leafletInfoAndAdviceTitle {
     position: relative;
     z-index: 2;
     background-color: ${(props) => props.theme.infoAdviceTitle};
     width: fit-content;
     margin-top: -40px;
     padding: 0 20px;
-    font-size: 40px;
+    font-size:  ${(props) => props.fontSizes.leafletInfoAndAdviceTitle ? `${props.fontSizes.leafletInfoAndAdviceTitle}px` : "40px"};
     color: white;
     border-radius: 10px;
     font-weight: 700;
     transform: rotate(-2deg);
   }
-  .infoSection {
+  .leafletInfoSection {
+    position:relative;
+    z-index: 5;
     line-height: 20px;
     font-weight: 400;
     padding: 40px;
@@ -75,29 +71,28 @@ export const LeafletPageStyled = styled.div<StyleProps>`
     max-width: 56%;
     white-space: pre-line;
     font-family: "Montserrat", sans-serif;
-    font-size: ${(props) => `${props.infoSize}px`};
+    font-size:  ${(props) => props.fontSizes.leafletInfoSection ? `${props.fontSizes.leafletInfoSection}px` : "14px"};
     span {
       font-family: "Montserrat", sans-serif;
     }
   }
-  .topTipTitle {
+  .leafletTopTipTitle {
     position: relative;
     z-index: 2;
     background-color: ${(props) => props.theme.tipTitle};
     width: fit-content;
     padding: 0 20px;
-    font-size: 40px;
     color: white;
     border-radius: 10px;
     font-weight: 700;
     transform: rotate(-3deg);
+    font-size:  ${(props) => props.fontSizes.leafletTopTipTitle ? `${props.fontSizes.leafletTopTipTitle}px` : "40px"};
   }
-  .topTipSection {
+  .leafletTopTipSection {
     position: relative;
     z-index: 1;
     line-height: 20px;
     font-weight: 400;
-    font-size: ${(props) => `${props.tipSize}px`};
     padding: 40px;
     background-color: ${(props) => props.theme.tipSection};
     color: white;
@@ -105,6 +100,7 @@ export const LeafletPageStyled = styled.div<StyleProps>`
     max-width: 50%;
     white-space: pre-line;
     font-family: "Montserrat", sans-serif;
+    font-size:  ${(props) => props.fontSizes.leafletTopTipSection ? `${props.fontSizes.leafletTopTipSection}px` : "14px"};
   }
   .logo {
     position: absolute;

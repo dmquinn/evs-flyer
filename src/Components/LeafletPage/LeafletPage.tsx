@@ -1,53 +1,67 @@
 import React from "react";
+import defaults from "../../data/defaultValues.json";
 import logo from "../../assets/logo.svg";
 import grass from "../../assets/grass.svg";
 import sign from "../../assets/sign.svg";
 import lightbulb from "../../assets/lightbulb.svg";
 import { LeafletPageStyled } from "./LeafletPageStyled";
 const LeafletPage = ({
-  title,
   handleMouseDown,
   handleMouseMove,
   handleMouseUp,
-  infoAndAdviceTitle,
-  infoSection,
-  tipTitle,
-  tipText,
-  infoAdviceRef,
   theme,
   mainImage,
-  tipSize,
-  infoSize,
   backgroundPosition,
   isDragging,
+  handleFocus,
+  fontSizes,
 }) => {
   return (
     <LeafletPageStyled
       theme={theme}
       image={mainImage}
-      tipSize={tipSize}
-      infoSize={infoSize}
       backgroundPosition={backgroundPosition}
       isDragging={isDragging}
+      fontSizes={fontSizes}
     >
-      <div className="titleBubble">{title}</div>
+      <div
+        className="leafletTitleBubble"
+        contentEditable
+        onClick={() => handleFocus("leafletTitleBubble")}
+      >
+        {defaults.leaflet.mainTitle}
+      </div>
       <div
         className="topImageContainer"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
       ></div>
-      <div className="infoAndAdviceTitle" ref={infoAdviceRef}>
-        {infoAndAdviceTitle}
+      <div
+        className="leafletInfoAndAdviceTitle"
+        contentEditable
+        onClick={() => handleFocus("leafletInfoAndAdviceTitle")}
+      >
+        {defaults.leaflet.infoTitle}
       </div>
       <div
-        className="infoSection"
-        dangerouslySetInnerHTML={{ __html: infoSection }}
+        className="leafletInfoSection"
+        contentEditable
+        dangerouslySetInnerHTML={{ __html: defaults.leaflet.infoText }}
+        onClick={() => handleFocus("leafletInfoSection")}
       />
-      <div className="topTipTitle">{tipTitle}</div>
       <div
-        className="topTipSection"
-        dangerouslySetInnerHTML={{ __html: tipText }}
+        className="leafletTopTipTitle"
+        contentEditable
+        onClick={() => handleFocus("leafletTopTipTitle")}
+      >
+        {defaults.leaflet.tipTitle}
+      </div>
+      <div
+        contentEditable
+        className="leafletTopTipSection"
+        dangerouslySetInnerHTML={{ __html: defaults.leaflet.tipText }}
+        onClick={() => handleFocus("leafletTopTipSection")}
       />
       <img src={lightbulb} className="lightbulb" alt="lightbulb" />
       <img src={logo} className="logo" alt="logo" />

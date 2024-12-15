@@ -21,17 +21,7 @@ export const AppStyled = styled.div`
       width: 50px;
     }
   }
-  .modeButtonsRow {
-    position: relative;
-    margin-left: 30px;
-    margin-bottom: 30px;
-    display: flex;
-    gap: 10px;
-    .modeButtons {
-      position: relative;
-      font-size: 20px;
-    }
-  }
+ 
   .highlighted {
     position: relative;
     z-index: 1;

@@ -1,0 +1,35 @@
+{
+  "leaflet": {
+    "mainTitle": "TORNADO TEDDY",
+    "mainTitleSize": 45,
+    "image": "https://static.wixstatic.com/media/d4d1f4_aa0fc0b21c444ad8be19d3fd85d193eb~mv2.jpeg/v1/fill/w_640,h_480,fp_0.50_0.30,q_80,usm_1.20_1.00_0.01,enc_auto/d4d1f4_aa0fc0b21c444ad8be19d3fd85d193eb~mv2.jpeg",
+    "infoTitle": "INFO AND ADVICE",
+    "infoTitleSize": 40,
+    "infoText": "Puppies can tip over from calm to over-threshold very quickly indeed - if not checked, they can really go berserk!\nWhen your pup sees something that fixates them - really focuses their attention - let them look and wait to see if they will lose interest - remember this is HABITUATION.\nIf they don't lose interest - interrupt the dog's focus. Make yourself exciting,get some treats out.\nEngage the puppy in a wee bit of training. This will help your dog's level of arousal (just excitement) to recede.\nThey can investigate the exciting thing IF APPROPRIATE but only when they are calm.",
+    "infoTextSize": 15,
+    "tipTitle": "TOP TIP",
+    "tipTitleSize": 40,
+    "tipText": "An over-excited puppy will literally not be able to think/hear you/remember anything! That makes them vulnerable - and we don't want that!",
+    "tipTextSize": 15
+  },
+  "title": {
+    "dogName": "Red",
+    "humanName": "Evelyn Cowie & Isobel Quinn",
+    "image": "https://images.unsplash.com/photo-1444212477490-ca407925329e?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "summary": {
+    "title": "SUMMARY OF STRENGTHS",
+    "titleSize": 60,
+    "subTitle": "PRESENTING\nISSUES",
+    "subTitleSize": 50,
+    "image": "https://cdn10.bigcommerce.com/s-4bmyxl4p/template/images/dog_training_tips.jpg",
+    "infoText": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    "infoTextSize": 20
+  },
+  "program": {
+    "title": "RECOMMENDED TRAINING PROGRAM",
+    "titleSize": 60,
+    "infoText": "We all want the absolute best for our puppies. That means aiming for good health and a positive attitude (especially when getting together with other dog friends). Let's look at how to make sure your puppy gets the most out of early life.\nHelping your pup become a well-adjusted, resilient adult dog is much easier when you understand the development stages they'll experience as they grow. Happy and healthy puppies are usually those that have been strongly supported at each phase of development, with their specific needs being met along the way, helping them to complete all the puppy milestones.\nIf you have all the right information on your pupp's development, you'll find it easier to tailor your training to their particular life stage. By doing this, you'll help ensure your new family member is at home in the world - and whenever their behavior changes unexpectedly, you'll know exactly what to do."
+  },
+  "infoTextSize": 40
+}
