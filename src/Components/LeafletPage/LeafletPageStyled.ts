@@ -10,6 +10,7 @@ interface StyleProps {
     leafletTopTipTitle?: string,
     leafletTopTipSection?: string
   }
+  showSign: boolean
 }
 export const LeafletPageStyled = styled.div<StyleProps>`
   .leafletTitleBubble {
@@ -68,7 +69,7 @@ export const LeafletPageStyled = styled.div<StyleProps>`
     background-color: ${(props) => props.theme.infoSection};
     color: white;
     border-radius: 20% 20% 30% 10% / 20% 20% 30% 30%;
-    max-width: 56%;
+    max-width: ${(props) => props.showSign ? "56%" : "80%"};
     white-space: pre-line;
     font-family: "Montserrat", sans-serif;
     font-size:  ${(props) => props.fontSizes.leafletInfoSection ? `${props.fontSizes.leafletInfoSection}px` : "14px"};
@@ -97,7 +98,7 @@ export const LeafletPageStyled = styled.div<StyleProps>`
     background-color: ${(props) => props.theme.tipSection};
     color: white;
     border-radius: 10% 20% 40% 10% / 30% 20% 40% 40%;
-    max-width: 50%;
+    max-width: ${(props) => props.showSign ? "50%" : "75%"};
     white-space: pre-line;
     font-family: "Montserrat", sans-serif;
     font-size:  ${(props) => props.fontSizes.leafletTopTipSection ? `${props.fontSizes.leafletTopTipSection}px` : "14px"};

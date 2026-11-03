@@ -17,6 +17,7 @@ const PageContainer: FC = () => {
     "leaflet" | "title" | "summary" | "program"
   >("leaflet");
   const { fontSizes, fontSelector, setFontSizes, handleFocus } = useFontSize();
+  const hiddenFileInput = useRef(null);
 
   const {
     colorTheme,
@@ -25,6 +26,8 @@ const PageContainer: FC = () => {
     setTopImage,
     imageStyle,
     setImageStyle,
+    showSign,
+    setShowSign,
   } = useInputs(pageMode);
 
   const {
@@ -66,7 +69,7 @@ const PageContainer: FC = () => {
       ),
       leaflet: (
         <div className="page">
-          <LeafletPage {...sharedProps} />{" "}
+          <LeafletPage {...sharedProps} showSign={showSign} />{" "}
         </div>
       ),
     };
@@ -94,6 +97,21 @@ const PageContainer: FC = () => {
           onChange={(e) => setTopImage(e.target.value)}
           className="imgInput"
         />
+        <button
+          className="imgUploadButton"
+          onClick={() => hiddenFileInput.current.click()}
+        >
+          Upload an Image
+        </button>
+        <input
+          type="file"
+          onChange={(e) => {
+            console.log(URL.createObjectURL(e.target.files[0]));
+            setTopImage(URL.createObjectURL(e.target.files[0]));
+          }}
+          ref={hiddenFileInput}
+          className="imgInputUploadButtonHidden"
+        />
         <div className="switchContainer">
           <p>Image Style</p>
           <label className="toggle-switch">
@@ -110,6 +128,8 @@ const PageContainer: FC = () => {
         pageModes={pageModes}
         colorThemeDisplay={colorThemeDisplay}
         setColorTheme={setColorTheme}
+        showSign={showSign}
+        setShowSign={setShowSign}
       />
       {renderPage()}
     </PageContainerStyled>

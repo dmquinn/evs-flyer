@@ -15,6 +15,7 @@ const LeafletPage = ({
   isDragging,
   handleFocus,
   fontSizes,
+  showSign,
 }) => {
   return (
     <LeafletPageStyled
@@ -23,6 +24,7 @@ const LeafletPage = ({
       backgroundPosition={backgroundPosition}
       isDragging={isDragging}
       fontSizes={fontSizes}
+      showSign={showSign}
     >
       <div
         className="leafletTitleBubble"
@@ -66,7 +68,7 @@ const LeafletPage = ({
       <img src={lightbulb} className="lightbulb" alt="lightbulb" />
       <img src={logo} className="logo" alt="logo" />
       <img src={grass} className="grass" alt="grass" />
-      <img src={sign} className="sign" alt="sign" />
+      {showSign && <img src={sign} className="sign" alt="sign" />}
     </LeafletPageStyled>
   );
 };

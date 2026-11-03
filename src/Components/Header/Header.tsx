@@ -4,10 +4,12 @@ import pdf from "../../assets/pdf.svg";
 import { HeaderStyled } from "./HeaderStyled";
 
 interface HeaderProps {
-  pageModes: any;
+  pageModes?: any;
   setPageMode: (mode: {}) => void;
   colorThemeDisplay: object[];
   setColorTheme: (theme: any) => void;
+  showSign: boolean;
+  setShowSign: (e: boolean) => void;
 }
 
 const Header: FC<HeaderProps> = ({
@@ -15,9 +17,13 @@ const Header: FC<HeaderProps> = ({
   setPageMode,
   colorThemeDisplay,
   setColorTheme,
+  showSign,
+  setShowSign,
 }) => {
+  console.log(showSign);
+
   return (
-    <HeaderStyled>
+    <HeaderStyled showSign={showSign}>
       <div className="modeButtonsRow">
         {pageModes?.map((mode) => (
           <button
@@ -42,6 +48,10 @@ const Header: FC<HeaderProps> = ({
       </div>
       <button onClick={generatePDF} className="pdfButton">
         <img src={pdf} alt="Download PDF" />
+      </button>
+
+      <button className="showSign" onClick={() => setShowSign(!showSign)}>
+        Show Sign
       </button>
     </HeaderStyled>
   );

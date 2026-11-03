@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 
-export const HeaderStyled = styled.div`
+type THeaderStyled = {
+  showSign: boolean;
+}
+export const HeaderStyled = styled.div<THeaderStyled>`
     display: flex;
     position: fixed;
     top: 0;
@@ -38,5 +41,8 @@ export const HeaderStyled = styled.div`
   }
   .pdfButton {
     margin-left: 60px;
+  }
+  .showSign {
+    color: ${(props) => props.showSign ? "black" : "gray"}
   }
 `

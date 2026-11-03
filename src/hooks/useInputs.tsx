@@ -5,6 +5,8 @@ export const useInputs = (pageMode) => {
   const [colorTheme, setColorTheme] = useState<string>("pinkish");
   const [topImage, setTopImage] = useState<string>(defaults[pageMode]?.image);
   const [imageStyle, setImageStyle] = useState<boolean>(true);
+  const [showSign, setShowSign] = useState<boolean>(true);
+
   useEffect(() => {
     setTopImage(defaults[pageMode]?.image);
   }, [pageMode]);
@@ -15,6 +17,8 @@ export const useInputs = (pageMode) => {
     setTopImage,
     imageStyle,
     setImageStyle,
+    showSign,
+    setShowSign,
   };
 };
 

@@ -40,6 +40,15 @@ export const PageContainerStyled = styled.div<StyleProps>`
   .imgInput {
     border: 0;
     padding: 10px 0px 10px 10px;
+    width: 80%;
+  }
+  .imgInputUploadButtonHidden {
+   display: none;
+  }
+  .imgUploadButton {
+    position:relative;
+    width: fit-content;
+    margin-left: 20px;
   }
   .switchContainer {
     display: flex;
